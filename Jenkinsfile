@@ -51,13 +51,17 @@ node {
             def is = ""
             def dockerImageRepository = ""
             String path = dockerfiles[i].path.replace(dockerfiles[i].name, "")
+            String buildName = path.replace('/', "")
+
             newBuild = newBuildOpenShift() {
+                name = buildName
                 url = scmUrl
                 branch = scmRef
                 contextDir = path
-                deleteBuild = false 
-                randomName = true 
+                deleteBuild = false
+                randomName = false
             }
+            /*
             dockerImageRepository = getImageStreamRepo(newBuild.buildConfigName).dockerImageRepository
 
             runOpenShift {
@@ -68,6 +72,7 @@ node {
             }
 
             resources = newBuild.names
+            */
             currentBuild.result = 'SUCCESS'
         }
         catch(all) {
@@ -76,6 +81,8 @@ node {
         }
         finally {
             stage('Clean Up Resources') {
+            echo "Clean up..."
+            /*
                openshift.withCluster() {
                     openshift.withProject() {
                         for (r in resources) {
@@ -83,6 +90,7 @@ node {
                         }
                     }
                 }
+            */
             }
         }
     }
