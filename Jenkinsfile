@@ -8,8 +8,12 @@ node {
     def source = ""
     def dockerfiles = null
     //def gitHubUtils = new com.redhat.GitHubUtils()
-    String scmRef = scm.branches[0]
-    String scmUrl = scm.browser.url
+
+    String scmRef = "jenkins"
+    String scmUrl = "https://github.com/jcpowermac/container-rhel-examples"
+
+    //String scmRef = scm.branches[0]
+    //String scmUrl = scm.browser.url
 
     /* Checkout source and find all the Dockerfiles.
      * This will not include Dockerfiles with extensions. Currently the issue
