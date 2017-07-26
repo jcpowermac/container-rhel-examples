@@ -7,9 +7,9 @@ properties([disableConcurrentBuilds()])
 node {
     def source = ""
     def dockerfiles = null
-    def gitHubUtils = new com.redhat.GitHubUtils()
-    String scmRef = scm.branches[0]
-    String scmUrl = scm.browser.url
+    //def gitHubUtils = new com.redhat.GitHubUtils()
+    //String scmRef = scm.branches[0]
+    //String scmUrl = scm.browser.url
 
     /* Checkout source and find all the Dockerfiles.
      * This will not include Dockerfiles with extensions. Currently the issue
@@ -28,6 +28,7 @@ node {
      * Otherwise just use the scm.browser.url and scm.branches[0]
      * for new-build.
      */
+    /*
     if (env.CHANGE_URL) {
         def pull = null
         stage('Github Url and Ref') {
@@ -40,6 +41,8 @@ node {
             }
         }
     }
+
+    */
     for (int i = 0; i < dockerfiles.size(); i++) {
 
         def resources = null
