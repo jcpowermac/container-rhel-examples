@@ -35,6 +35,13 @@ node {
             def dockerImageRepository = ""
             String path = dockerfiles[i].path.replace(dockerfiles[i].name, "")
             String buildName = "${path.replace('/', "")}-${scmRef}"
+            
+            
+            String normalizeRef = scmRef.replace('_', '-').toLowerCase()
+            String normalizePath = path.replace('/','').replace('_','-').toLowerCase()
+
+            
+            String buildName = "${normalizePath}.${normalizeRef}"
 
             newBuild = newBuildOpenShift() {
                 name = buildName
