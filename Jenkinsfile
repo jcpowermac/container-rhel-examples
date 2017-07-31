@@ -9,6 +9,8 @@ node {
     def dockerfiles = null
     String scmUrl = scm.browser.url
     String scmRef = "${CHANGE_BRANCH}"
+    
+    echo "foo"
 
     /* Checkout source and find all the Dockerfiles.
      * This will not include Dockerfiles with extensions. Currently the issue
