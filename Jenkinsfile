@@ -34,7 +34,7 @@ node {
             def is = ""
             def dockerImageRepository = ""
             String path = dockerfiles[i].path.replace(dockerfiles[i].name, "")
-            String buildName = "${path.replace('/', "")}-${scmRef}"
+            //String buildName = "${path.replace('/', "")}-${scmRef}"
             
             
             String normalizeRef = scmRef.replace('_', '-').toLowerCase()
