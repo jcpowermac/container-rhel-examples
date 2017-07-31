@@ -9,6 +9,8 @@ node {
     def dockerfiles = null
     String scmUrl = scm.browser.url
     String scmRef = "${CHANGE_BRANCH}"
+    
+    echo "foo"
 
     /* Checkout source and find all the Dockerfiles.
      * This will not include Dockerfiles with extensions. Currently the issue
@@ -32,7 +34,7 @@ node {
             def is = ""
             def dockerImageRepository = ""
             String path = dockerfiles[i].path.replace(dockerfiles[i].name, "")
-            String buildName = "${path.replace('/', "")}_${scmRef}"
+            String buildName = "${path.replace('/', "")}-${scmRef}"
 
             newBuild = newBuildOpenShift() {
                 name = buildName
