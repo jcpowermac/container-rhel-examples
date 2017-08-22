@@ -12,6 +12,8 @@ node {
     String scmRef = "master"
     String buildName = ""
 
+    echo sh(returnStdout: true, script: 'env') 
+
 
     if(env.CHANGE_BRANCH) {
         scmRef = "${env.CHANGE_BRANCH}"
