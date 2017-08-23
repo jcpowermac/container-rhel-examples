@@ -11,6 +11,7 @@ node {
     String scmUrl = scm.browser.url
     String scmRef = "master"
     String buildName = ""
+    def gitHubUtils = new com.redhat.GitHubUtils()
 
     echo sh(returnStdout: true, script: 'env')
     
